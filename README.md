@@ -2,6 +2,59 @@
 
 ## Basic
 
+### Terminology
+
+1. Function declaration
+
+```javascript
+function myFunction() {}
+```
+
+2. Function expression
+
+```javascript
+const myFunction = function () {};
+
+const newFunction = () => {};
+```
+
+3. Expression
+
+- expression is comething that produces a value.
+
+```javascript
+1 + 3;
+let a = 2;
+return true;
+```
+
+4. Calling or invoking a function
+
+```javascript
+myFunction();
+myFunction(param1, param2);
+```
+
+5. Assign a variable
+
+```javascript
+let age = 20;
+```
+
+6. Function VS Methods
+
+```javascript
+function thisIsFunction() {}
+
+const obj = {
+	thisIsMethod: function () {},
+};
+
+// how to access
+thisIsFunction();
+obj.thisIsMethod();
+```
+
 ### Type of Data
 
 - Number
