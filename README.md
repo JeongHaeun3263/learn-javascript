@@ -20,7 +20,7 @@ const newFunction = () => {};
 
 3. Expression
 
-- expression is comething that produces a value.
+- expression is something that produces a value.
 
 ```javascript
 1 + 3;
@@ -262,8 +262,9 @@ squidGame('dance', printGo, printStop); // result: You have to stop!
 
 3. Arrow function
 
+- always anonymous
+
 ```javascript
-// always anonymous
 // const simplePrint = function () {
 //   console.log('simplePrint!');
 // };
@@ -279,6 +280,79 @@ const simpleMultiply = (a, b) => {
 (function hello() {
 	console.log('IIFE');
 })();
+```
+
+### Loops
+
+1. For Loop
+
+```javascript
+const friends = ['Monica', 'Rachel', 'Phoebe', 'Chandler', 'Ross', 'Joey'];
+
+for (let i = 0; i < friends.length; i++) {
+	console.log(friends[i]);
+}
+```
+
+2. forEach
+
+```javascript
+const friends = ['Monica', 'Rachel', 'Phoebe', 'Chandler', 'Ross', 'Joey'];
+
+const logFriends = (friend) => {
+	console.log(friend);
+};
+friends.forEach(logFriends);
+
+// can be more simple and readable
+friends.forEach((friend) => {
+	console.log(friend);
+});
+
+// how to access index in forEach
+friends.forEach((friend, i) => {
+	console.log(friend, i);
+});
+```
+
+3. While
+
+```javascript
+let counter = 10;
+
+while (counter > 0) {
+	console.log(counter);
+	counter--;
+}
+```
+
+4. Do ... while
+
+```javascript
+let counter = 10;
+
+do {
+	console.log(counter);
+	counter--;
+} while (counter > 0);
+```
+
+**'while' vs 'do ... while'**
+
+```javascript
+let number = 10;
+
+while (number > 10) {
+	console.log('while', number);
+	number--;
+}
+
+do {
+	console.log('do while', number);
+	number--;
+} while (number > 10);
+
+// result: do while 10
 ```
 
 ### Data Structures
