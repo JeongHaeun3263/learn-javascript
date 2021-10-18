@@ -365,6 +365,95 @@ collections of properties and methods
 
 - [Array Methods Cheat Sheet](https://www.notion.so/81628d655d734671ba195a5283089b84?v=a276134512f445f4892725d7ce8ba0c4)
 
+## DOM (Document Object Model) Manipulation
+
+- A web browser has a window object that has a 'document' property
+- A document property specifies what should be displayed
+- DOM reads HTML, CSS
+- JavaScript is read line by line by the JavaScript engine in the browser
+
+### DOM selector
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<title>JavaScript</title>
+		<script defer src="script.js"></script>
+	</head>
+	<body>
+		<h1>To do List</h1>
+		<p id="first">First</p>
+		<p class="second">Second</p>
+		<ul>
+			<li random="123">Walking</li>
+			<li>Studying</li>
+			<li>Cooking</li>
+			<li>Reading</li>
+		</ul>
+	</body>
+</html>
+```
+
+1. Selector
+
+```javascript
+document.getElementsByTagName('h1')[0]; // <h1>To do List</h1>
+document.getElementsByClassName('second'); // <p class="second">Second</p>
+document.getElementById('first'); // <p id="first">First</p>
+
+// Better way
+document.querySelector('h1'); // <h1>To do List</h1>
+document.querySelector('li'); // <li>Walking</li> *only first one
+document.querySelectorAll('li'); // get all of them (Array)
+
+document.querySelector('li').getAttribute('random'); // 123
+document.querySelector('li').setAttribute('random', 1000); // arribute will be changed 123 to 1000
+```
+
+2. Changing Styles
+
+```javascript
+// style.{property}
+document.querySelector('h1').style.color = 'red'; // "To do List" color: red
+// but it is better to seperate style from javascript file
+```
+
+2.1. Changing Styles Better way
+
+**script.js**
+
+```javascript
+const title = document.querySelector('h1');
+title.className = 'title'; // class ('title') will be added
+title.classList; // DOMTokenList ['title', value: 'title']
+
+title.classList.add('title--red');
+title.classList.remove('title--red');
+title.classList.toggle('title--red');
+```
+
+**style.css**
+
+```css
+.title--red {
+	color: red;
+}
+```
+
+3. parentElement, children
+
+```javascript
+document.querySelectorAll('li')[1].parentElement; // <ul>
+document.querySelector('ul').children; // [li, li, li, li]
+```
+
+[learn more...](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+
 ## 🔗 Useful Websites
 
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
