@@ -402,22 +402,6 @@ document.querySelector('li').getAttribute('random'); // 123
 document.querySelector('li').setAttribute('random', 1000); // arribute will be changed 123 to 1000
 ```
 
-1-1 HTTPCollection -> Array
-
-```html
-<ul>
-	<li>Apple</li>
-	<li>Banana</li>
-	<li>Orange</li>
-</ul>
-```
-
-```javascript
-const fruits = document.getElementsByTagName('li');
-console.log(fruits); // HTMLCollection(3) [li, li, li]
-console.log([...fruits]); // (3) [li, li, li]
-```
-
 2. Changing Styles
 
 ```javascript
@@ -454,6 +438,48 @@ title.classList.toggle('title--red');
 document.querySelectorAll('li')[1].parentElement; // <ul>
 document.querySelector('ul').children; // [li, li, li, li]
 ```
+
+### HTMLCollection, NodeList
+
+- DOM Object
+
+1. HTMLCollection
+
+- getElementsByTagName, getElementsByClassName
+- live
+
+**HTMLCollection to Array**
+
+```html
+<ul id="fruits">
+	<li>Apple</li>
+	<li>Banana</li>
+	<li>Orange</li>
+</ul>
+```
+
+```javascript
+const fruits = document.getElementsByTagName('li');
+console.log(fruits); // HTMLCollection(3) [li, li, li]
+console.log([...fruits]); // (3) [li, li, li]
+console.log(Array.from(fruits)); // (3) [li, li, li]
+
+// Now, we can use Array.methods (forEach, map, filter, reduce...)
+const fruitsArray = [...fruits].forEach((fruit) => (fruit.className = 'red'));
+```
+
+2. NodeList
+
+- querySelectorAll
+- static, (\*exception: live (Node.childNodes))
+
+```javascript
+const fruits = document.getElementById('fruits');
+console.log(fruits.childNodes); // NodeList(7) [text, li, text, li, text, li, text]
+```
+
+- you can use `forEach` method
+- [more methods](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
 
 ### DOM Event
 
