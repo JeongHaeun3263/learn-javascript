@@ -370,7 +370,7 @@ collections of properties and methods
 - parsing HTML, CSS and display the results
 - provide DOM API
 
-### DOM selector
+#### DOM selector
 
 ```html
 <body>
@@ -439,7 +439,7 @@ document.querySelectorAll('li')[1].parentElement; // <ul>
 document.querySelector('ul').children; // [li, li, li, li]
 ```
 
-### HTMLCollection, NodeList
+#### HTMLCollection, NodeList
 
 - DOM Object
 
@@ -481,7 +481,56 @@ console.log(fruits.childNodes); // NodeList(7) [text, li, text, li, text, li, t
 - you can use `forEach` method
 - [more methods](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
 
-### DOM Event
+#### Walking the DOM
+
+1. Child Node
+
+```html
+<ul id="fruits">
+	<li>Apple</li>
+	<li>Banana</li>
+	<li>Orange</li>
+</ul>
+```
+
+```javascript
+const fruits = document.getElementById('fruits');
+console.log(fruits.childNodes); // NodeList(7) [text, li, text, li, text, li, text]
+console.log(fruits.children); // HTMLCollection(3) [li, li, li]
+
+console.log(fruits.firstChild); // #text
+console.log(fruits.firstElementChild); // li.apple
+
+console.log(fruits.lastChild); // #text
+console.log(fruits.lastElementChild); // <li>...</li>
+```
+
+- check if the Node has child nodes or not
+- return a boolean
+
+```html
+<ul id="fruits">
+	<!--  -->
+</ul>
+```
+
+```javascript
+console.log(fruits.hasChildNodes()); // true * because of white space
+console.log(fruits.children.length); // 0
+console.log(fruits.childElementCount); // 0
+```
+
+2. Parent Node
+
+3. Sibling
+
+#### nodeType, nodeName
+
+#### nodeValue, textContent
+
+#### DOM Manipulation
+
+#### DOM Event
 
 **index.html**
 
