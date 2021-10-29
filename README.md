@@ -370,7 +370,7 @@ collections of properties and methods
 - parsing HTML, CSS and display the results
 - provide DOM API
 
-#### DOM selector
+### DOM selector
 
 ```html
 <body>
@@ -481,7 +481,7 @@ console.log(fruits.childNodes); // NodeList(7) [text, li, text, li, text, li, t
 - you can use `forEach` method
 - [more methods](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
 
-#### Walking the DOM
+### Walking the DOM
 
 1. Child Node
 
@@ -528,9 +528,41 @@ console.log(fruits.childElementCount); // 0
 
 #### nodeValue, textContent
 
-#### DOM Manipulation
+### DOM Manipulation
 
-#### DOM Event
+#### Create Elements
+
+**index.html**
+
+```html
+<ul id="to-do-list">
+	<li class="to-do-item">study</li>
+</ul>
+```
+
+**script.js**
+
+```javascript
+const toDoList = document.getElementById('to-do-list');
+
+const createEl = () => {
+	const doToItem = document.createElement('li');
+	doToItem.textContent = 'walking';
+	doToItem.classList.add('to-do-item');
+	doToItem.setAttribute('onclick', 'done()');
+
+	//append
+	toDoList.appendChild(doToItem);
+};
+
+const done = () => {
+	console.log('nice job!');
+};
+
+createEl();
+```
+
+### DOM Event
 
 **index.html**
 
@@ -550,6 +582,10 @@ button.addEventListener('click', greeting);
 ```
 
 [Learn more about Event](https://developer.mozilla.org/en-US/docs/Web/Events)
+
+## Advanced Concepts
+
+### Global Execution Context
 
 ## 🔗 Useful Websites
 
