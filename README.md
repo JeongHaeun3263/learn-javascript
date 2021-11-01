@@ -481,7 +481,7 @@ console.log(fruits.childNodes); // NodeList(7) [text, li, text, li, text, li, t
 - you can use `forEach` method
 - [more methods](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
 
-### Walking the DOM
+#### Walking the DOM
 
 1. Child Node
 
@@ -579,6 +579,53 @@ const greeting = () => {
 
 const button = document.querySelector('.button');
 button.addEventListener('click', greeting);
+```
+
+#### Event Bubbling & Event Delegation
+
+**index.html**
+
+```html
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+	<li>7</li>
+	<li>8</li>
+	<li>9</li>
+	<li>10</li>
+</ul>
+```
+
+**style.css**
+
+```css
+.done {
+	text-decoration: line-through;
+}
+```
+
+**script.js**
+
+```javascript
+// Bad 👎
+const lis = document.querySelectorAll('li');
+lis.forEach((li) => {
+	li.addEventListener('click', () => {
+		li.classList.add('done');
+	});
+});
+
+// Good 👍
+const ul = document.querySelector('ul');
+ul.addEventListener('click', (e) => {
+	if (e.target.tagName == 'LI') {
+		e.target.classList.toggle('done');
+	}
+});
 ```
 
 [Learn more about Event](https://developer.mozilla.org/en-US/docs/Web/Events)
