@@ -365,6 +365,61 @@ collections of properties and methods
 
 - [Array Methods Cheat Sheet](https://www.notion.so/81628d655d734671ba195a5283089b84?v=a276134512f445f4892725d7ce8ba0c4)
 
+## Object-oriented JavaScript (OOP)
+
+We use objectss to model real world things that we want to represent inside ouf program
+
+- **Encapsulation**: object data (information, functionality/behavior) can be stored inside an object package
+- **Abstration**: Creating a simple model of a more complex thing
+  (For example, Person objects can have a lot of things such as an address, height but we focus on only what we interested in for our program)
+- **Inheritance**: Child classes (subclasses) can be created to inherit the data of their parent class
+- **Polymorphism**: The ability of multiple object types to implement the same functionality
+
+```javascript
+class Person {
+	// When an object instance is created from a class,
+	// the class's construction function is run to create it
+	constructor(name) {
+		this.name = name;
+		this.greeting = () => {
+			console.log(`Hello ${this.name}`);
+		};
+	}
+}
+
+const person1 = new Person('Grace');
+person1.greeting(); // Hello Grace
+const person2 = new Person('Peter');
+person2.greeting(); // Hello Peter
+```
+
+### Other ways to create Objects
+
+1. Object() constructor
+
+```javascript
+const person1 = new Object();
+person1.name = 'Grace';
+person1.greeting = function () {
+	console.log(`Hello ${this.name}`);
+
+	// It doesn't work
+	// person1.greeting = () => {
+	//		console.log(`Hello ${this.name}`);
+	// }
+};
+
+person1.greeting(); // Hello Grace
+```
+
+2. create() method
+
+```javascript
+const person2 = Object.create(person1);
+```
+
+Reference: [MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS)
+
 ## DOM (Document Object Model)
 
 - parsing HTML, CSS and display the results
