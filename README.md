@@ -375,10 +375,16 @@ We use objectss to model real world things that we want to represent inside ouf 
 - **Inheritance**: Child classes (subclasses) can be created to inherit the data of their parent class
 - **Polymorphism**: The ability of multiple object types to implement the same functionality
 
+### Class
+
+#### Defining a class
+
+**Class Declaration**
+
 ```javascript
 class Person {
 	// When an object instance is created from a class,
-	// the class's construction function is run to create it
+	// the class's construction function will be running to create it
 	constructor(name) {
 		this.name = name;
 		this.greeting = () => {
@@ -386,7 +392,22 @@ class Person {
 		};
 	}
 }
+```
 
+**Class Expression**
+
+```javascript
+const Person = class {
+	constructor(name) {
+		this.name = name;
+		this.greeting = () => {
+			console.log(`Hello ${this.name}`);
+		};
+	}
+};
+```
+
+```javascript
 const person1 = new Person('Grace');
 person1.greeting(); // Hello Grace
 const person2 = new Person('Peter');
