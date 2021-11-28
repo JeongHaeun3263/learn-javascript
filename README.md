@@ -55,17 +55,123 @@ thisIsFunction();
 obj.thisIsMethod();
 ```
 
-### Type of Data
+### 7 Data Types
 
-- Number
-- String
-  [String Methods Cheat Sheet](https://www.notion.so/b511826f7ef948089e11c0f0e7ac7491?v=7eb505cec57f42519e36a3a2f0a048ae)
+#### Number
 
-- Boolean
-- Undefined
-- Null
-- Symbol
-- Object
+#### String
+
+[String Methods Cheat Sheet](https://www.notion.so/b511826f7ef948089e11c0f0e7ac7491?v=7eb505cec57f42519e36a3a2f0a048ae)
+
+#### Boolean
+
+- true / false
+
+* considered as a false : 0, null, undefined, NaN, ''
+
+#### Undefined
+
+#### Null
+
+#### Symbol
+
+```javascript
+const symbol1 = Symbol('id');
+const symbol2 = Symbol('id');
+console.log(symbol1 === symbol2); // false
+
+const symbol3 = Symbol.for('id');
+const symbol4 = Symbol.for('id');
+console.log(symbol3 === symbol4); // true
+```
+
+- how to print a symbol
+
+```javascript
+console.log(symbol1.description);
+```
+
+#### Objects
+
+##### About objects
+
+object = {key: value}
+
+```javascript
+const grace = { id: '1', location: 'Toronto', position: 'front end developer' };
+console.log(grace.location); // Toronto
+console.log(grace['position']); // front end developer // useful when you need to get it dynamically
+```
+
+_Example_
+
+```javascript
+function printKey(obj, key) {
+	console.log(obj.key); //undefined
+	console.log(obj[key]); // Toronto
+}
+
+printKey(grace, 'location');
+```
+
+**For..in**
+
+```javascript
+for (key in grace) {
+	console.log(key); // id, location, position
+}
+```
+
+##### Create Objects
+
+1. Object() constructor
+
+```javascript
+const person1 = new Object();
+person1.name = 'Grace';
+person1.greeting = function () {
+	console.log(`Hello ${this.name}`);
+
+	// It doesn't work
+	// person1.greeting = () => {
+	//		console.log(`Hello ${this.name}`);
+	// }
+};
+
+person1.greeting(); // Hello Grace
+```
+
+2. create() method
+
+```javascript
+const person2 = Object.create(person1);
+```
+
+3. contructor function
+
+```javascript
+function Person(name, location) {
+	this.name = name;
+	this.location = location;
+}
+
+person1 = new Person('grace', 'toronto');
+console.log(person1);
+```
+
+##### Object Cloning
+
+```javascript
+const person3 = {};
+Object.assign(person3, person1);
+
+const person4 = Object.assign({}, person1);
+```
+
+### Type conversion
+
+1. Explicit
+2. Implicit conversion (Type coercion)
 
 ### Operator
 
@@ -87,11 +193,6 @@ obj.thisIsMethod();
   console.log(3 ** 2); // 9
   ```
 - more... (?., ??, delete, new, instanceof, in)
-
-### Type conversion
-
-1. Explicit
-2. Implicit conversion (Type coercion)
 
 ### Functions
 
@@ -359,9 +460,12 @@ do {
 
 #### Arrays
 
-#### Objects
-
-collections of properties and methods
+```javascript
+const array = [1, 2, 3, 4, 5];
+for (value of array) {
+	console.log(value); // 1, 2, 3, 4, 5
+}
+```
 
 - [Array Methods Cheat Sheet](https://www.notion.so/81628d655d734671ba195a5283089b84?v=a276134512f445f4892725d7ce8ba0c4)
 
@@ -486,33 +590,6 @@ const triangle = new Triangle(20, 20, 'red');
 triangle.draw(); // drawing red color! // 🔺
 console.log(triangle.getArea()); // 200
 ```
-
-### Other ways to create Objects
-
-1. Object() constructor
-
-```javascript
-const person1 = new Object();
-person1.name = 'Grace';
-person1.greeting = function () {
-	console.log(`Hello ${this.name}`);
-
-	// It doesn't work
-	// person1.greeting = () => {
-	//		console.log(`Hello ${this.name}`);
-	// }
-};
-
-person1.greeting(); // Hello Grace
-```
-
-2. create() method
-
-```javascript
-const person2 = Object.create(person1);
-```
-
-Reference: [MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS)
 
 ## DOM (Document Object Model)
 
@@ -783,7 +860,8 @@ ul.addEventListener('click', (e) => {
 
 ### Global Execution Context
 
-## 🔗 Useful Websites
+## 🔗 Useful Websites & Reference
 
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [The Modern JavaScript Tutorial](https://javascript.info/)
+- [Youtube - Dream Coding](https://www.youtube.com/playlist?list=PLv2d7VI9OotTVOL4QmPfvJWPJvkmv6h-2)
