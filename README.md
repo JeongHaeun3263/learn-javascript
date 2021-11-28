@@ -414,6 +414,79 @@ const person2 = new Person('Peter');
 person2.greeting(); // Hello Peter
 ```
 
+#### Getter and Setter
+
+```javascript
+class Product {
+	constructor(name, price) {
+		this.name = name;
+		this.price = price;
+	}
+
+	get price() {
+		return this._price; // to avoid call stack size exceeded
+	}
+
+	set price(value) {
+		this._price = value < 0 ? 0 : value;
+	}
+}
+
+const product1 = new Product('computer', 1000);
+console.log(product1.price); // 1000
+
+const product2 = new Product('computer', -1000);
+console.log(product2.price); // 0
+```
+
+#### Inheritance
+
+```javascript
+class Shape {
+	constructor(width, height, color) {
+		this.width = width;
+		this.height = height;
+		this.color = color;
+	}
+
+	draw() {
+		console.log(`drawing ${this.color} color!`);
+	}
+
+	getArea() {
+		return this.width * this.height;
+	}
+}
+
+class Rectangle extends Shape {}
+
+class Triangle extends Shape {
+	// overwriting
+	draw() {
+		super.draw(); // to use shape's draw methods
+		console.log('🔺'); // additional code
+	}
+
+	// overwriting
+	getArea() {
+		return (this.width * this.height) / 2;
+	}
+
+	// As classes inherit from a object, we can use this
+	toString() {
+		return `Triangle: color: ${this.color}`;
+	}
+}
+
+const rectangle = new Rectangle(20, 20, 'blue');
+rectangle.draw(); // result: drawing blue color!
+console.log(rectangle.getArea()); // 400
+
+const triangle = new Triangle(20, 20, 'red');
+triangle.draw(); // drawing red color! // 🔺
+console.log(triangle.getArea()); // 200
+```
+
 ### Other ways to create Objects
 
 1. Object() constructor
